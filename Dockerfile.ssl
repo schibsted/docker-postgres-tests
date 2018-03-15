@@ -1,0 +1,11 @@
+# Dockerfile extension that adds ssl support for postgres
+
+RUN if [ -e /etc/alpine-release ] ; then \
+        apk add --no-cache openssl; \
+     else \
+        apt-get update;\
+        apt-get install openssl;\
+     fi
+ADD certificate.sh /docker-entrypoint-initdb.d/
+ENV POSTGRES_SSL_KEY_LENGTH=1024
+ENV POSTGRES_SSL_ONLY=false

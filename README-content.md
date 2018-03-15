@@ -116,6 +116,22 @@ This optional environment variable can be used to send arguments to `postgres in
 
 This optional environment variable can be used to define another location for the Postgres transaction log. By default the transaction log is stored in a subdirectory of the main Postgres data folder (`PGDATA`). Sometimes it can be desireable to store the transaction log in a different directory which may be backed by storage with different performance or reliability characteristics.
 
+### `POSTGRES_SSL_ONLY`
+
+This optional environment variable can be used with ssl images to instruct postgres to deny any non-ssl connections.
+
+### `POSTGRES_SSL_KEY_LENGTH`
+
+This optional environment variable can be used with ssl images to override the default RSA key length of 1024.
+
+### `POSTGRES_HEALTH_QUERY`
+
+This optional environment variable can be used to customize the query to executed to consider the container healthy.
+
+### `POSTGRES_NO_HEALTH_QUERY`
+
+This optional environment variable can be used to remove the SQL part for the healthcheck. In this case, the container will be considered healthy as soon as pg_isready succeeds.
+
 **Note:** on PostgreSQL 9.x, this variable is `POSTGRES_INITDB_XLOGDIR` (reflecting [the changed name of the `--xlogdir` flag to `--waldir` in PostgreSQL 10+](https://wiki.postgresql.org/wiki/New_in_postgres_10#Renaming_of_.22xlog.22_to_.22wal.22_Globally_.28and_location.2Flsn.29)).
 
 ## Docker Secrets
