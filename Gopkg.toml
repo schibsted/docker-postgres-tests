@@ -19,3 +19,11 @@
 #  name = "github.com/x/y"
 #  version = "2.4.0"
 
+
+[[constraint]]
+  branch = "master"
+  name = "github.com/heroku/docker-registry-client"
+
+[[override]]
+  name = "github.com/docker/distribution"
+  branch = "master"
