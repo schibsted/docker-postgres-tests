@@ -3,6 +3,12 @@
 
 [[projects]]
   branch = "master"
+  name = "bitbucket.org/zombiezen/cardcpx"
+  packages = ["natsort"]
+  revision = "902f68ff43ef38482b3a747c71193c3ac7f9ff62"
+
+[[projects]]
+  branch = "master"
   name = "github.com/docker/distribution"
   packages = [
     ".",
@@ -62,6 +68,6 @@
 [solve-meta]
   analyzer-name = "dep"
   analyzer-version = 1
-  inputs-digest = "ef2662a32a10c3761729a41b9baee02d794e1e467ffdd419ccd0fecc2dfd28d2"
+  inputs-digest = "765e6b0c49d6d43988961fedbd8a10bffd7d7a0aa75680c72983c6c83682a56c"
   solver-name = "gps-cdcl"
   solver-version = 1

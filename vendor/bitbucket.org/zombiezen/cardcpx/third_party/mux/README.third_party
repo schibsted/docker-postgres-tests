@@ -1,0 +1,10 @@
+URL: https://github.com/gorilla/mux/archive/854d482e26505d59549690719cbc009f04042c2e.zip
+Version: 854d482e26505d59549690719cbc009f04042c2e
+License: BSD
+License File: LICENSE
+
+Description:
+Gorilla Mux is a regexp-based HTTP request router.
+
+Local Modifications:
+No Modifications.

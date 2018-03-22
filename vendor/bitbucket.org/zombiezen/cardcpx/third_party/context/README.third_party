@@ -1,0 +1,10 @@
+URL: https://github.com/gorilla/context/archive/14f550f51af52180c2eefed15e5fd18d63c0a64a.zip
+Version: 14f550f51af52180c2eefed15e5fd18d63c0a64a
+License: BSD
+License File: LICENSE
+
+Description:
+Gorilla Context is a library for attaching contexts to HTTP requests.
+
+Local Modifications:
+No Modifications.

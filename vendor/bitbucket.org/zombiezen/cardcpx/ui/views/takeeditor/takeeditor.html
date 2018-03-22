@@ -1,0 +1,41 @@
+<h1>Take {{takeEditor.id.scene}}-{{takeEditor.id.num}}</h1>
+
+<!-- TODO(light): button actions -->
+
+<form class="form-horizontal">
+  <div class="form-group">
+    <label class="control-label col-sm-2">Scene</label>
+    <div class="col-sm-10">
+      <input type="text" class="form-control" name="scene" ng-model="takeEditor.take.id.scene">
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="control-label col-sm-2">Take #</label>
+    <div class="col-sm-10">
+      <input type="text" class="form-control" name="num" ng-model="takeEditor.take.id.num">
+    </div>
+  </div>
+  <div class="form-group">
+  <!-- TODO(light): clip name -->
+    <label class="control-label col-sm-2">Clip</label>
+    <div class="col-sm-10">
+      <p class="form-control-static">{{takeEditor.take.clipName}}</p>
+    </div>
+  </div>
+  <div class="form-group">
+    <div class="col-sm-offset-2 col-sm-10">
+      <div class="checkbox">
+        <label>
+          <input type="checkbox" name="select" ng-model="takeEditor.take.select">
+          Select
+        </label>
+      </div>
+    </div>
+  </div>
+  <div class="form-group">
+    <div class="col-sm-offset-2 col-sm-10">
+      <button ng-click="takeEditor.save()" type="submit" class="btn btn-primary">Save</button>
+      <button ng-click="takeEditor.destroy()" class="btn btn-danger">Delete</button>
+    </div>
+  </div>
+</form>

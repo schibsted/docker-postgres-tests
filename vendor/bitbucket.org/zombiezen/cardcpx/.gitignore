@@ -1,0 +1,6 @@
+/build
+/cardcpx
+/node_modules/
+/npm-debug.log
+/third_party/closure-compiler/build
+/ui/js.js

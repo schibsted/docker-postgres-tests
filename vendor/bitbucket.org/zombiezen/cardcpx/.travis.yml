@@ -1,0 +1,10 @@
+language: go
+
+go:
+- 1.2
+- 1.4
+
+sudo: false
+install:
+- npm install karma karma-closure karma-jasmine karma-phantomjs-launcher
+script: make all test

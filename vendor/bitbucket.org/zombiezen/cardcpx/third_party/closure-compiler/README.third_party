@@ -1,0 +1,11 @@
+URL: https://github.com/google/closure-compiler/archive/2e2d7cf2ea8e6b5a0a3081fc8c160ef10bcc94d2.zip
+Version: 2e2d7cf2ea8e6b5a0a3081fc8c160ef10bcc94d2
+License: Apache 2.0
+License File: LICENSE
+
+Description:
+The Closure Compiler minifies and optimizes JavaScript.
+
+Local Modifications:
+Expose the remove_unused_prototype_props_in_externs, export_local_property_definitions, and
+property_renaming flags.

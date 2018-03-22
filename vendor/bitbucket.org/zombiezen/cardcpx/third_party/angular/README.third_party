@@ -1,0 +1,15 @@
+URL: http://code.angularjs.org/1.2.16/angular-1.2.16.zip
+Version: 1.2.16
+License: MIT
+License File: LICENSE
+
+Description:
+Angular is a HTML templating library which allows data binding of HTML view
+to
+javascript model object. Unlike many other templating libraries angular's
+model
+object is always the source of the truth.
+
+Local Modifications:
+LICENSE file has been created for compliance purposes. Not included in original
+distribution.

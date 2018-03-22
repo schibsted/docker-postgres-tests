@@ -1,0 +1,86 @@
+<h1>Import</h1>
+
+<div class="row">
+  <form class="form-horizontal col-xs-12 col-md-6" role="form" ng-submit="importer.openPath(importer.newPath)">
+    <div class="form-group">
+      <label class="col-sm-2 control-label" for="pathField">Path</label>
+      <div class="col-sm-10">
+        <input id="pathField" class="form-control" type="text" name="path" ng-model="importer.newPath">
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="col-sm-2 control-label" for="subdirField">Subdirectory</label>
+      <div class="col-sm-10">
+        <input id="subdirField" class="form-control" type="text" name="subdir" ng-model="importer.subdir">
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="col-sm-offset-2 col-sm-10">
+        <input type="submit" value="Open" class="btn btn-default">
+      </div>
+    </div>
+  </form>
+</div>
+
+<div class="row" ng-if="importer.path">
+  <div class="col-xs-12" ng-switch on="importer.getState()">
+    <p ng-switch-when="loading">Loading...</p>
+    <p ng-switch-when="noData">No clips found at {{importer.path}}</p>
+    <div class="table-responsive" ng-switch-default>
+      <table class="table importTable">
+        <thead>
+          <th class="checked" scope="col">
+            <ccx-allbox
+                all="importer.allChecked()"
+                any="importer.anyChecked()"
+                check="importer.checkAll()"
+                uncheck="importer.checkNone()"
+                ng-disabled="importer.isActive()"
+                id="importer-allbox"></ccx-allbox>
+            <label class="sr-only" for="importer-allbox">Select All</label>
+          </th>
+          <th class="name" scope="col">Clip</th>
+          <th class="scene" scope="col">Scene</th>
+          <th class="num" scope="col">Take</th>
+          <th class="select" scope="col">Select?</th>
+          <th class="totalSize" scope="col">Size</th>
+        </thead>
+        <tbody>
+          <tr
+              ng-repeat="item in importer.items"
+              ng-class="{info: item.state=='active', success: item.state=='imported', danger: item.state=='error'}">
+            <td class="checked">
+              <input id="item{{$index}}-checked" type="checkbox" ng-model="item.checked" ng-disabled="importer.isActive()">
+              <label class="sr-only" for="item{{$index}}-checked">Selected</label>
+            </td>
+            <td class="name">{{item.clip.name}}</td>
+            <td class="scene">
+              <input type="text" ng-model="item.scene" ng-disabled="importer.isActive()">
+              <autofill-button ng-click="importer.autofillScene($index)" ng-disabled="importer.isActive()"></autofill-button>
+            </td>
+            <td class="num">
+              <input type="text" ng-model="item.num" ng-disabled="importer.isActive()">
+              <autofill-button ng-click="importer.autofillNum($index)" ng-disabled="importer.isActive()"></autofill-button>
+            </td>
+            <td class="select">
+              <input id="item{{$index}}-select" type="checkbox" ng-model="item.select" ng-disabled="importer.isActive()">
+              <label class="sr-only" for="item{{$index}}-select">Select?</label>
+            </td>
+            <td class="totalSize">{{item.clip.totalSize|fileSize}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <nav class="navbar navbar-default navbar-fixed-bottom" ng-if="importer.getState() == 'ready' || importer.getState() == 'active'">
+    <div class="container">
+      <!-- TODO(light): fix styles on progress bar -->
+      <span ng-if="importer.isActive()" class="navbar-left" style="width: 20em">
+        <progressbar value="importer.progress" max="1"></progressbar>
+      </span>
+      <span class="navbar-text" ng-if="importer.isActive() && importer.eta">ETA: {{importer.eta|date:'h:mm a'}}</span>
+      <span class="navbar-text">{{importer.checkedSize()|fileSize}}</span>
+      <button type="button" class="btn btn-primary navbar-btn navbar-right" ng-click="importer.startImport()" ng-disabled="!importer.enabled || importer.isActive()">Import</button>
+    </div>
+  </nav>
+</div>

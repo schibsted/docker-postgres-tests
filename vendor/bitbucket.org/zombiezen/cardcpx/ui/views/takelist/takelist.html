@@ -1,0 +1,28 @@
+<h1>Takes</h1>
+<p>
+  <ng-pluralize count="takeList.takes.length" when="{'one': '1 take', 'other': '{} takes'}"></ng-pluralize>
+  over
+  <ng-pluralize count="takeList.scenes.length" when="{'one': '1 scene', 'other': '{} scenes'}"></ng-pluralize>.
+  <a href="/take/takes.csv">Download</a>
+</p>
+<accordion close-others="true">
+  <accordion-group ng-repeat="scene in takeList.scenes" heading="Scene {{scene.scene}}">
+    <table class="table takeTable">
+      <col class="num">
+      <col class="clipName">
+      <col class="select">
+      <thead>
+        <th scope="col">#</th>
+        <th scope="col">Clip</th>
+        <th scope="col">Select?</th>
+      </thead>
+      <tbody>
+        <tr ng-repeat="take in scene.takes">
+          <td><a href="/ui/take/{{take.id.scene}}/{{take.id.num}}">{{take.id.num}}</a></td>
+          <td>{{take.clipName}}</td>
+          <td><span ng-if="take.select">&#x2713;</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </accordion-group>
+</accordion>
