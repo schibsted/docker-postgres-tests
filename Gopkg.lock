@@ -21,6 +21,12 @@
   revision = "aabc10ec26b754e797f9028f4589c5b7bd90dc20"
 
 [[projects]]
+  name = "github.com/docopt/docopt-go"
+  packages = ["."]
+  revision = "784ddc588536785e7299f7272f39101f7faccc3f"
+  version = "0.6.2"
+
+[[projects]]
   branch = "master"
   name = "github.com/heroku/docker-registry-client"
   packages = ["registry"]
@@ -56,6 +62,6 @@
 [solve-meta]
   analyzer-name = "dep"
   analyzer-version = 1
-  inputs-digest = "90ee06bccc91fdd7f40e5be4e3755b759720a0e806cccbbf20b365504ade59aa"
+  inputs-digest = "ef2662a32a10c3761729a41b9baee02d794e1e467ffdd419ccd0fecc2dfd28d2"
   solver-name = "gps-cdcl"
   solver-version = 1

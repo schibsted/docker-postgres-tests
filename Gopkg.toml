@@ -27,3 +27,6 @@
 [[override]]
   name = "github.com/docker/distribution"
   branch = "master"
+[[constraint]]
+  name = "github.com/docopt/docopt-go"
+  version = "0.6.2"
