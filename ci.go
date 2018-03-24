@@ -82,6 +82,15 @@ func releaseVersion(version string) string {
 	return version + suffix
 }
 
+func supported(tag string) bool {
+	for _, prefix := range []string{"8", "9.0", "9.1", "9.2"} {
+		if strings.HasPrefix(tag, prefix) {
+			return false
+		}
+	}
+	return true
+}
+
 func push(branches ...string) {
 	branchesToPush := []string{}
 	for _, branch := range branches {
@@ -125,8 +134,14 @@ func main() {
 		log.Fatalf("dockerfile should start with '%v', got: '%v'", header, string(dockerfile[:len(header)]))
 	}
 	dockerfile = dockerfile[len(header):]
-	tags, err := hub.Tags("library/postgres")
+	allTags, err := hub.Tags("library/postgres")
 	ifErrorf(log.Fatalf, err, "failed to get tags for library/postgres on docker hub")
+	tags := allTags[:0]
+	for _, tag := range allTags {
+		if supported(tag) {
+			tags = append(tags, tag)
+		}
+	}
 
 	dockerfileSSL, err := ioutil.ReadFile("Dockerfile.ssl")
 	ifErrorf(log.Fatalf, err, "failed to read Dockerfile.ssl")
